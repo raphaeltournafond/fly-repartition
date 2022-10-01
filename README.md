@@ -1,2 +1,2 @@
 # Fly repartition
-A inverse iteration algorithm applied to fly repartition in rooms
+An inverse iteration algorithm applied to fly repartition in rooms
