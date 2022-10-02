@@ -18,7 +18,7 @@ reste_p = 0
 bouge_p = 1 - reste_p
 # Valeur initiale z
 z = 0.78
-# Type d'affiche des lignes
+# Type d'affichage des lignes
 courbe = True
 
 # Intialisation
