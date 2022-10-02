@@ -56,6 +56,9 @@ def methodePuissanceInverse(A):
 
         convergence = False
         
+        print(X)
+        print(R)
+        
         
         
         while not(convergence):
@@ -80,6 +83,8 @@ q,X,evol = methodePuissanceInverse(A)
 print(q, X)
 s2 = somme(X)
 X = s/s2*X
+
+print(X)
 
 print("Le vecteur propre associé à la valeur 1 : ")
 print(X)                                ## Affichage du vecteur propre 
