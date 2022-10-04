@@ -3,6 +3,7 @@ import decimal
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
+import pprint
 
 # Constantes
 
@@ -17,7 +18,7 @@ reste_p = 0
 # Probabilite  qune mouche change de piece
 bouge_p = 1 - reste_p
 # Valeur initiale z
-z = 0.78
+z = 0.99
 # Type d'affichage des lignes
 courbe = True
 
@@ -106,6 +107,15 @@ def afficheResultats(q, x, evolution):
     construitStationaire(q, x)
     construitEvolution(evolution)
     plt.show()
+    
+def balayement(start = 0.01, end = 0.99, step = 0.01, digit = 4):
+    r = np.arange(start, end, step)
+    d = {}
+    for i in r:
+        q, x, e = puissanceInverse(A, i)
+        rounded = round(q, digit)
+        d[rounded] = numerise(x)
+    return d
 
         
 A = initMatriceTransition()
@@ -113,6 +123,8 @@ print('Matrice de transition A :\n', A)
 
 try:
     q, x, evolution = puissanceInverse(A, z)
+    b = balayement()
+    pprint.pprint(b)
     afficheResultats(q, x, evolution)
 except np.linalg.LinAlgError:
     print('le z choisis est déjà une valeur propre')
