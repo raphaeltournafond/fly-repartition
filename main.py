@@ -8,17 +8,19 @@ import pprint
 # Constantes
 
 # Vecteur largeur des portes
-L = np.array([125, 100, 75, 75, 75])
+L = np.array([125, 100, 67, 75, 86, 57, 24, 34, 75, 34])
 # Nombre de pieces
 n = len(L)
 # Vecteur repartition initiale des mouches
-M = np.array([100, 100, 100, 0, 0])
+M = np.array([123, 479, 535, 3645, 352, 45, 556, 2, 356, 876])
 # Probabilite qune mouche ne change pas de piece
 reste_p = 0
 # Probabilite  qune mouche change de piece
 bouge_p = 1 - reste_p
 # Valeur initiale z
 z = 0.99
+# Precision
+precision = 1e-12
 # Type d'affichage des lignes
 courbe = True
 
@@ -34,7 +36,6 @@ def initMatriceTransition():
     return T
 
 def puissanceInverse(A, z):
-    precision = 1e-6
     r = abs(decimal.Decimal(str(precision)).as_tuple().exponent) 
     I = np.identity(n)
     try:
@@ -114,7 +115,8 @@ def balayement(start = 0.01, end = 0.99, step = 0.01, digit = 4):
     for i in r:
         q, x, e = puissanceInverse(A, i)
         rounded = round(q, digit)
-        d[rounded] = numerise(x)
+        num = numerise(x)
+        d[rounded] = [num, sum(num)]
     return d
 
         
